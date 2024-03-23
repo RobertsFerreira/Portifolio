@@ -4,6 +4,7 @@ class Timeline extends StatelessWidget {
   const Timeline({
     Key? key,
     required this.children,
+    this.leadings,
     this.indicators,
     this.isLeftAligned = true,
     this.itemGap = 12.0,
@@ -25,13 +26,20 @@ class Timeline extends StatelessWidget {
     this.style = PaintingStyle.stroke,
     this.indicatorGapFactory = 1.5,
     this.indicatorCentered = false,
+    this.factorGapEndLine = 1,
   })  : itemCount = children.length,
         assert(itemGap >= 0),
         assert(lineGap >= 0),
         assert(indicators == null || children.length == indicators.length),
+        assert(
+          leadings == null ||
+              indicators == null ||
+              leadings.length == indicators.length,
+        ),
         super(key: key);
 
   final List<Widget> children;
+  final List<Widget>? leadings;
   final double itemGap;
   final double gutterSpacing;
   final List<Widget>? indicators;
@@ -46,6 +54,9 @@ class Timeline extends StatelessWidget {
   final double indicatorGapFactory;
   final Color lineColor;
   final double lineGap;
+
+  /// Define factor of calculate gap between final line and next indicator
+  final double factorGapEndLine;
   final double indicatorSize;
   final Color indicatorColor;
   final Alignment indicatorAlignment;
@@ -80,7 +91,22 @@ class Timeline extends StatelessWidget {
         final isFirst = index == 0;
         final isLast = index == itemCount - 1;
 
+        Widget? leading;
+        // indicator.
+
+        if (leadings != null) {
+          leading = leadings![index];
+          leading = Padding(
+            padding: const EdgeInsets.only(top: 6),
+            child: Align(
+              alignment: indicatorAlignment,
+              child: indicatorCentered ? Center(child: leading) : leading,
+            ),
+          );
+        }
+
         final timelineTile = <Widget>[
+          leading ?? const SizedBox(),
           CustomPaint(
             foregroundPainter: _TimelinePainter(
               hideDefaultIndicator: indicator != null,
@@ -97,6 +123,7 @@ class Timeline extends StatelessWidget {
               strokeWidth: strokeWidth,
               style: style,
               itemGap: itemGap,
+              factorGapEndLine: factorGapEndLine,
             ),
             child: SizedBox(
               height: double.infinity,
@@ -145,6 +172,7 @@ class _TimelinePainter extends CustomPainter {
     required this.isFirst,
     required this.isLast,
     required this.itemGap,
+    required this.factorGapEndLine,
   })  : linePaint = Paint()
           ..color = lineColor
           ..strokeCap = strokeCap
@@ -171,12 +199,16 @@ class _TimelinePainter extends CustomPainter {
   final bool isLast;
   final double itemGap;
 
+  /// Define factor of calculate gap between final line and next indicator
+  final double factorGapEndLine;
+
   @override
   void paint(Canvas canvas, Size size) {
     ///calcule the radius of the indicator based on the size
     final indicatorRadius = indicatorSize / 2;
 
     ///calcule the gap between the final of the text and the next topic on the timeline
+    ///Too size of gap to end line from next indicator
     final halfItemGap = itemGap / 2;
 
     /// calc the gap between the indicator and the line
@@ -191,7 +223,7 @@ class _TimelinePainter extends CustomPainter {
     );
 
     final bottom = size.bottomLeft(
-      Offset(indicatorRadius, 0.0 + halfItemGap),
+      Offset(indicatorRadius, 0.0 + halfItemGap * factorGapEndLine),
     );
 
     final centerBottom = size.centerLeft(

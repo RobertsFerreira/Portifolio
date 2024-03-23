@@ -36,8 +36,24 @@ class _CurriculumState extends State<Curriculum> {
               indicatorAlignment: Alignment.topCenter,
               itemGap: 20,
               indicatorCentered: true,
+              leadings: const [
+                Column(
+                  children: [
+                    Text('2019'),
+                    Text('a'),
+                    Text('2023'),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Text('2023'),
+                    Text('a'),
+                    Text('2024'),
+                  ],
+                )
+              ],
               indicators: List.generate(
-                3,
+                2,
                 (index) => const Icon(
                   Icons.circle,
                   size: 12,
@@ -52,7 +68,7 @@ class _CurriculumState extends State<Curriculum> {
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     const Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent rhoncus suscipit orci porttitor sollicitudin. Proin eu eros hendrerit, malesuada nunc sed, tincidunt metus. Vestibulum auctor eget eros quis imperdiet. Vivamus in mi ultricies, consectetur ex quis, pharetra sapien. Integer maximus lacus nec nisl ultricies molestie. Proin sodales lobortis tellus a tristique. Sed sed auctor tellus, eget dapibus odio. Pellentesque urna nulla, dapibus vitae varius ut, tempus sed libero. In tempor dignissim scelerisque. Maecenas vel felis hendrerit, commodo ipsum et, suscipit arcu. Etiam consectetur orci et condimentum porta. Aliquam tristique nisl convallis, egestas sapien sed, facilisis erat.Maecenas vel erat et orci aliquet sodales eu ut velit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus aliquam, ante consequat finibus posuere, mauris arcu vestibulum enim, at gravida purus ipsum sed augue. Integer a nisl consequat, mattis nisi in, molestie justo. Nullam eleifend velit quis est posuere interdum. Donec a pellentesque ex, eu malesuada felis. Suspendisse lobortis ut lorem eget interdum. Aliquam erat volutpat. Proin in libero magna. Donec blandit nisi mauris, quis vehicula sem pellentesque eget. Nullam sed metus nisl. Donec consequat massa lorem, a aliquet risus ullamcorper ut. Cras porttitor justo eu iaculis consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                      'Pelo Centro Universitário Governador Ozana Coelho, Ubá - MG ',
                     ),
                   ],
                 ),
@@ -60,23 +76,11 @@ class _CurriculumState extends State<Curriculum> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Pós-Graduação em Engenharia de Qualidade de Software',
+                      'Pós-Graduação em Engenharia da Qualidade de Software',
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     const Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent rhoncus suscipit orci',
-                    ),
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Pós-Graduação em Engenharia de Qualidade de Software',
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    const Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent rhoncus suscipit orci',
+                      'Pela Faculdade Bookplay, Birigui - SP ',
                     ),
                   ],
                 ),

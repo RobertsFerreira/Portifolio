@@ -92,15 +92,15 @@ class _CurriculumState extends State<Curriculum> {
               children: const [
                 TimelineItem(
                   title: 'Suporte Técnico',
-                  subTitle: 'Empresa: VeeV sistemas',
+                  subTitle: 'Empresa: VeeV Sistemas, Tocantins - MG',
                   description:
                       'Suporte ao cliente realizando atendimentos presencialmente e on-line. Nos atendimentos era feito a analise dos erros reportados pelo clientes e também os seus pedidos de alteração.\nTesters das aplicações da empresa realizando busca de bugs e problemas nas alterações realizadas.',
                 ),
                 TimelineItem(
                   title: 'Programador Full - Stack',
-                  subTitle: 'Empresa: VeeV sistemas',
+                  subTitle: 'Empresa: VeeV Sistemas, Tocantins - MG',
                   description:
-                      'Responsável pelo desenvolvimento e manutenção dos softwares mais atuais da empresa, no qual era realizadas utilizando Dart e Flutter, em conjunto de Python e Flask e FastApi',
+                      'Responsável pelo desenvolvimento e manutenção dos softwares mais atuais da empresa, no qual era realizadas utilizando Dart e Flutter, em conjunto com Python e os frameworks Flask e FastApi',
                 ),
               ],
             ),

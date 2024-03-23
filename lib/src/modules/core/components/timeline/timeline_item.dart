@@ -23,8 +23,17 @@ class TimelineItem extends StatelessWidget {
         Visibility(
           visible: subTitle != null,
           replacement: const SizedBox.shrink(),
-          child: Text(subTitle ?? ''),
+          child: const SizedBox(height: 10),
         ),
+        Visibility(
+          visible: subTitle != null,
+          replacement: const SizedBox.shrink(),
+          child: Text(
+            subTitle ?? '',
+            style: Theme.of(context).textTheme.labelMedium,
+          ),
+        ),
+        const SizedBox(height: 10),
         Text(description),
       ],
     );

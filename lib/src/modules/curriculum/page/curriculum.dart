@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:portifolio/src/modules/core/components/timeline/timeline_component.dart';
 
+import '../../core/components/timeline/timeline_item.dart';
+import '../../core/components/timeline/timeline_leading_item.dart';
+
 class Curriculum extends StatefulWidget {
   const Curriculum({super.key});
 
@@ -37,20 +40,14 @@ class _CurriculumState extends State<Curriculum> {
               itemGap: 20,
               indicatorCentered: true,
               leadings: const [
-                Column(
-                  children: [
-                    Text('2019'),
-                    Text('a'),
-                    Text('2023'),
-                  ],
+                TimelineYearLeadingItem(
+                  startYear: '2019',
+                  endYear: '2023',
                 ),
-                Column(
-                  children: [
-                    Text('2023'),
-                    Text('a'),
-                    Text('2024'),
-                  ],
-                )
+                TimelineYearLeadingItem(
+                  startYear: '2023',
+                  endYear: '2024',
+                ),
               ],
               indicators: List.generate(
                 2,
@@ -59,30 +56,15 @@ class _CurriculumState extends State<Curriculum> {
                   size: 12,
                 ),
               ),
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Bacharel em Ciência da Computação',
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    const Text(
-                      'Pelo Centro Universitário Governador Ozana Coelho, Ubá - MG ',
-                    ),
-                  ],
+              children: const [
+                TimelineItem(
+                  title: 'Pós-Graduação em Engenharia da Qualidade de Software',
+                  description:
+                      'Pelo Centro Universitário Governador Ozana Coelho, Ubá - MG',
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Pós-Graduação em Engenharia da Qualidade de Software',
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    const Text(
-                      'Pela Faculdade Bookplay, Birigui - SP ',
-                    ),
-                  ],
+                TimelineItem(
+                  title: 'Bacharel em Ciência da Computação',
+                  description: 'Pela Faculdade Bookplay, Birigui - SP',
                 ),
               ],
             ),
@@ -92,7 +74,36 @@ class _CurriculumState extends State<Curriculum> {
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             const SizedBox(height: 20),
-            const Text('This is the curriculum page'),
+            Timeline(
+              indicatorAlignment: Alignment.topCenter,
+              itemGap: 20,
+              indicatorCentered: true,
+              leadings: const [
+                TimelineYearLeadingItem(startYear: '2021', endYear: '2022'),
+                TimelineYearLeadingItem(startYear: '2022', isCurrent: true),
+              ],
+              indicators: List.generate(
+                2,
+                (index) => const Icon(
+                  Icons.circle,
+                  size: 12,
+                ),
+              ),
+              children: const [
+                TimelineItem(
+                  title: 'Suporte Técnico',
+                  subTitle: 'Empresa: VeeV sistemas',
+                  description:
+                      'Suporte ao cliente realizando atendimentos presencialmente e on-line. Nos atendimentos era feito a analise dos erros reportados pelo clientes e também os seus pedidos de alteração.\nTesters das aplicações da empresa realizando busca de bugs e problemas nas alterações realizadas.',
+                ),
+                TimelineItem(
+                  title: 'Programador Full - Stack',
+                  subTitle: 'Empresa: VeeV sistemas',
+                  description:
+                      'Responsável pelo desenvolvimento e manutenção dos softwares mais atuais da empresa, no qual era realizadas utilizando Dart e Flutter, em conjunto de Python e Flask e FastApi',
+                ),
+              ],
+            ),
             const SizedBox(height: 50),
             Text(
               'Certificações',

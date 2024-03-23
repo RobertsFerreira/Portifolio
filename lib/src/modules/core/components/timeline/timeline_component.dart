@@ -100,13 +100,13 @@ class Timeline extends StatelessWidget {
             padding: const EdgeInsets.only(top: 6),
             child: Align(
               alignment: indicatorAlignment,
-              child: indicatorCentered ? Center(child: leading) : leading,
+              child: Center(child: leading),
             ),
           );
         }
 
         final timelineTile = <Widget>[
-          leading ?? const SizedBox(),
+          leading ?? const SizedBox.shrink(),
           CustomPaint(
             foregroundPainter: _TimelinePainter(
               hideDefaultIndicator: indicator != null,

@@ -45,23 +45,45 @@ class _HomePageState extends State<HomePage>
         children: [
           const SizedBox(height: 35),
           Expanded(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Expanded(flex: 4, child: Curriculum()),
-                VerticalDivider(
-                  color: Theme.of(context).dividerColor.withOpacity(.1),
-                ),
-                MenuIndiceComponent(
-                  elevatedAnimation: elevatedAnimation,
-                  elevatedAnimController: elevatedAnimController,
-                ),
-                const SizedBox(width: 5),
-              ],
+            child: LayoutBuilder(
+              builder: (_, constraints) {
+                if (constraints.maxWidth >= 1024) {
+                  return _layoutBuildDesktop(constraints.maxWidth);
+                }
+                if (constraints.maxWidth >= 768 &&
+                    constraints.maxWidth < 1024) {
+                  return _layoutBuildTablet(constraints.maxWidth);
+                }
+                return Text(constraints.maxWidth.toString());
+              },
             ),
           ),
         ],
       ),
     );
+  }
+
+  Widget _layoutBuildDesktop(double maxWidth) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          flex: 4,
+          child: Curriculum(maxWidth: maxWidth),
+        ),
+        VerticalDivider(
+          color: Theme.of(context).dividerColor.withOpacity(.1),
+        ),
+        MenuIndiceComponent(
+          elevatedAnimation: elevatedAnimation,
+          elevatedAnimController: elevatedAnimController,
+        ),
+        const SizedBox(width: 5),
+      ],
+    );
+  }
+
+  Widget _layoutBuildTablet(double maxWidth) {
+    return Curriculum(maxWidth: maxWidth);
   }
 }

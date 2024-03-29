@@ -31,40 +31,17 @@ class _CurriculumState extends State<Curriculum> {
             ),
             const SizedBox(height: 50),
             Text(
-              'Formações',
+              'Idiomas',
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             const SizedBox(height: 20),
-            Timeline(
-              indicatorAlignment: Alignment.topCenter,
-              itemGap: 20,
-              indicatorCentered: true,
-              leadings: const [
-                TimelineYearLeadingItem(
-                  startYear: '2019',
-                  endYear: '2023',
-                ),
-                TimelineYearLeadingItem(
-                  startYear: '2023',
-                  endYear: '2024',
-                ),
-              ],
-              indicators: List.generate(
-                2,
-                (index) => const Icon(
-                  Icons.circle,
-                  size: 12,
-                ),
-              ),
-              children: const [
-                TimelineItem(
-                  title: 'Pós-Graduação em Engenharia da Qualidade de Software',
-                  description:
-                      'Pelo Centro Universitário Governador Ozana Coelho, Ubá - MG',
-                ),
-                TimelineItem(
-                  title: 'Bacharel em Ciência da Computação',
-                  description: 'Pela Faculdade Bookplay, Birigui - SP',
+            Row(
+              children: [
+                const Icon(Icons.circle, size: 14),
+                const SizedBox(width: 10),
+                Text(
+                  'Português - Navito',
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ],
             ),
@@ -79,23 +56,16 @@ class _CurriculumState extends State<Curriculum> {
               itemGap: 20,
               indicatorCentered: true,
               leadings: const [
-                TimelineYearLeadingItem(startYear: '2021', endYear: '2022'),
-                TimelineYearLeadingItem(startYear: '2022', isCurrent: true),
+                TimelineYearLeadingItem(startYear: '2021', isCurrent: true),
               ],
               indicators: List.generate(
-                2,
+                1,
                 (index) => const Icon(
                   Icons.circle,
                   size: 12,
                 ),
               ),
               children: const [
-                TimelineItem(
-                  title: 'Suporte Técnico',
-                  subTitle: 'Empresa: VeeV Sistemas, Tocantins - MG',
-                  description:
-                      'Suporte ao cliente realizando atendimentos presencialmente e on-line. Nos atendimentos era feito a analise dos erros reportados pelo clientes e também os seus pedidos de alteração.\nTesters das aplicações da empresa realizando busca de bugs e problemas nas alterações realizadas.',
-                ),
                 TimelineItem(
                   title: 'Programador Full - Stack',
                   subTitle: 'Empresa: VeeV Sistemas, Tocantins - MG',
@@ -106,19 +76,42 @@ class _CurriculumState extends State<Curriculum> {
             ),
             const SizedBox(height: 50),
             Text(
-              'Certificações',
+              'Formações e Certificações',
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             const SizedBox(height: 20),
-            const Text('This is the curriculum page'),
+            Timeline(
+              indicatorAlignment: Alignment.topCenter,
+              itemGap: 20,
+              indicatorCentered: true,
+              leadings: const [
+                TimelineYearLeadingItem(startYear: '2019', endYear: '2023'),
+                TimelineYearLeadingItem(startYear: '2023', endYear: '2024'),
+                TimelineYearLeadingItem(startYear: '2022', endYear: '2022'),
+              ],
+              indicators: List.generate(
+                3,
+                (index) => const Icon(Icons.circle, size: 12),
+              ),
+              children: const [
+                TimelineItem(
+                  title: 'Bacharel em Ciência da Computação',
+                  subTitle:
+                      'Pelo Centro Universitário Governador Ozana Coelho, Ubá - MG',
+                  description:
+                      'Neste curso foi demonstrado a base estrutal e lógica em áreas como a de desenvolvimento, redes. Demonstrações nas quais ocorreram através de trabalhos práticos. Em todos os sistemas eram obrigtários que os alunos elaborassem por ideias de projetos que atendessem sobre os temas oferecidos e que pudesse ajudar a população local.',
+                ),
+                TimelineItem(
+                  title: 'Pós-Graduação em Engenharia da Qualidade de Software',
+                  description: 'Pela Faculdade Bookplay, Birigui - SP',
+                ),
+                TimelineItem(
+                  title: 'Curso de Criação de Apps Android/iOS/Web com Flutter',
+                  description: 'Pela Udemy',
+                ),
+              ],
+            ),
             const SizedBox(height: 50),
-            Text(
-              'Habilidades',
-              style: Theme.of(context).textTheme.headlineLarge,
-            ),
-            const SizedBox(height: 20),
-            const Text('This is the curriculum page'),
-            const SizedBox(height: 50)
           ],
         ),
       ),

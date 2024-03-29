@@ -21,13 +21,20 @@ class _CurriculumState extends State<Curriculum> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 100),
-            Text(
-              'Perfil',
-              style: Theme.of(context).textTheme.headlineLarge,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Robert da Silva Ferreira',
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
+                const SizedBox(height: 8),
+                const Text('Tocantins, MG'),
+              ],
             ),
             const SizedBox(height: 20),
             const Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent rhoncus suscipit orci porttitor sollicitudin. Proin eu eros hendrerit, malesuada nunc sed, tincidunt metus. Vestibulum auctor eget eros quis imperdiet. Vivamus in mi ultricies, consectetur ex quis, pharetra sapien. Integer maximus lacus nec nisl ultricies molestie. Proin sodales lobortis tellus a tristique. Sed sed auctor tellus, eget dapibus odio. Pellentesque urna nulla, dapibus vitae varius ut, tempus sed libero. In tempor dignissim scelerisque. Maecenas vel felis hendrerit, commodo ipsum et, suscipit arcu. Etiam consectetur orci et condimentum porta. Aliquam tristique nisl convallis, egestas sapien sed, facilisis erat.Maecenas vel erat et orci aliquet sodales eu ut velit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus aliquam, ante consequat finibus posuere, mauris arcu vestibulum enim, at gravida purus ipsum sed augue. Integer a nisl consequat, mattis nisi in, molestie justo. Nullam eleifend velit quis est posuere interdum. Donec a pellentesque ex, eu malesuada felis. Suspendisse lobortis ut lorem eget interdum. Aliquam erat volutpat. Proin in libero magna. Donec blandit nisi mauris, quis vehicula sem pellentesque eget. Nullam sed metus nisl. Donec consequat massa lorem, a aliquet risus ullamcorper ut. Cras porttitor justo eu iaculis consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+              'Bacharel em Ciência da computação com 2 anos de experiencia em desenvolvimento de software. Dentro dos 2 anos, foco principal em desenvolvimento mobile e desktop e ocorrendo pequenas experiencias com desenvolvimento web. Conhecimento sobre a linguagens Python e alguns frameworks como FastAPI e Flask para desenvolvimento de API, enquanto no desenvolvimento Front-end o foco é voltado para o dart com o framework Flutter.',
             ),
             const SizedBox(height: 50),
             Text(
@@ -40,7 +47,7 @@ class _CurriculumState extends State<Curriculum> {
                 const Icon(Icons.circle, size: 14),
                 const SizedBox(width: 10),
                 Text(
-                  'Português - Navito',
+                  'Português - Nativo',
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
               ],
@@ -97,17 +104,20 @@ class _CurriculumState extends State<Curriculum> {
                 TimelineItem(
                   title: 'Bacharel em Ciência da Computação',
                   subTitle:
-                      'Pelo Centro Universitário Governador Ozana Coelho, Ubá - MG',
+                      'Pelo Centro Universitário Governador Ozanan Coelho, Ubá - MG',
                   description:
-                      'Neste curso foi demonstrado a base estrutal e lógica em áreas como a de desenvolvimento, redes. Demonstrações nas quais ocorreram através de trabalhos práticos. Em todos os sistemas eram obrigtários que os alunos elaborassem por ideias de projetos que atendessem sobre os temas oferecidos e que pudesse ajudar a população local.',
+                      'Neste curso foi demonstrado a base estrutural e lógica em áreas como a de desenvolvimento, redes. Demonstrações nas quais ocorreram através de trabalhos práticos. Em todos os sistemas eram obrigatórios que os alunos elaborassem por ideias de projetos que atendessem sobre os temas oferecidos e que pudesse ajudar a população local.',
                 ),
                 TimelineItem(
                   title: 'Pós-Graduação em Engenharia da Qualidade de Software',
-                  description: 'Pela Faculdade Bookplay, Birigui - SP',
+                  subTitle: 'Pela Faculdade BookPlay, Birigui - SP',
+                  description: '',
                 ),
                 TimelineItem(
                   title: 'Curso de Criação de Apps Android/iOS/Web com Flutter',
-                  description: 'Pela Udemy',
+                  subTitle: 'Pela Udemy',
+                  description:
+                      'Curso introdutório de Flutter e Dart, iniciando com o ensino de conceitos básicos da linguagem. Ao avançar nos conceitos começam ser desenvolvidos projetos práticos para aplicar os conceitos ensinados.',
                 ),
               ],
             ),

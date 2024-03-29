@@ -20,42 +20,46 @@ class _CurriculumState extends State<Curriculum> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 100),
+            const SizedBox(height: 20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'Robert da Silva Ferreira',
-                  style: Theme.of(context).textTheme.headlineLarge,
+                  style: Theme.of(context).textTheme.displayLarge,
                 ),
                 const SizedBox(height: 8),
-                const Text('Tocantins, MG'),
+                Text(
+                  'Tocantins, Minas Gerais.',
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
               ],
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Bacharel em Ciência da computação com 2 anos de experiencia em desenvolvimento de software. Dentro dos 2 anos, foco principal em desenvolvimento mobile e desktop e ocorrendo pequenas experiencias com desenvolvimento web. Conhecimento sobre a linguagens Python e alguns frameworks como FastAPI e Flask para desenvolvimento de API, enquanto no desenvolvimento Front-end o foco é voltado para o dart com o framework Flutter.',
+            Text(
+              'Bacharel em Ciência da computação com 2 anos de experiencia em desenvolvimento de software. Dentro dos 2 anos, o foco principal na área mobile e desktop e ocorrendo pequenas experiencias com web. Conhecimento sobre a linguagens Python e alguns frameworks como FastAPI e Flask para desenvolvimento de API, enquanto no desenvolvimento Front-end o foco é voltado para o dart com o framework Flutter.',
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
             const SizedBox(height: 50),
             Text(
               'Idiomas',
-              style: Theme.of(context).textTheme.headlineLarge,
+              style: Theme.of(context).textTheme.displaySmall,
             ),
             const SizedBox(height: 20),
             Row(
               children: [
-                const Icon(Icons.circle, size: 14),
+                const Icon(Icons.circle, size: 8),
                 const SizedBox(width: 10),
                 Text(
                   'Português - Nativo',
-                  style: Theme.of(context).textTheme.titleSmall,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ],
             ),
             const SizedBox(height: 50),
             Text(
               'Experiências',
-              style: Theme.of(context).textTheme.headlineLarge,
+              style: Theme.of(context).textTheme.displaySmall,
             ),
             const SizedBox(height: 20),
             Timeline(
@@ -84,7 +88,7 @@ class _CurriculumState extends State<Curriculum> {
             const SizedBox(height: 50),
             Text(
               'Formações e Certificações',
-              style: Theme.of(context).textTheme.headlineLarge,
+              style: Theme.of(context).textTheme.displaySmall,
             ),
             const SizedBox(height: 20),
             Timeline(

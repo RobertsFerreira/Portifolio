@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-
-import 'menu_indice_item.dart';
+import 'package:portifolio/src/modules/core/components/menu_indice/menu_indice_item.dart';
 
 class MenuIndiceComponent extends StatelessWidget {
   final Animation<double> elevatedAnimation;
   final AnimationController elevatedAnimController;
+  final List<MenuIndiceItem> items;
 
   const MenuIndiceComponent({
     super.key,
     required this.elevatedAnimation,
     required this.elevatedAnimController,
+    required this.items,
   });
 
   @override
@@ -21,18 +22,13 @@ class MenuIndiceComponent extends StatelessWidget {
         onExit: (_) => elevatedAnimController.reverse(from: 1),
         child: Card(
           elevation: elevated,
-          child: const Padding(
-            padding: EdgeInsets.all(10),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                MenuIndiceItem(title: 'Home'),
-                SizedBox(height: 10),
-                MenuIndiceItem(title: 'Projects'),
-                SizedBox(height: 10),
-                MenuIndiceItem(title: 'CV'),
-              ],
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: ListView.separated(
+              shrinkWrap: true,
+              itemBuilder: (_, index) => items[index],
+              separatorBuilder: (_, __) => const SizedBox(height: 10),
+              itemCount: items.length,
             ),
           ),
         ),

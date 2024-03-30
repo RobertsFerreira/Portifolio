@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:portifolio/src/modules/core/components/menu_indice/menu_indice_component.dart';
 import 'package:portifolio/src/modules/curriculum/page/curriculum.dart';
 
+import '../core/components/menu_indice/menu_indice_item.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
 
@@ -77,6 +79,11 @@ class _HomePageState extends State<HomePage>
         MenuIndiceComponent(
           elevatedAnimation: elevatedAnimation,
           elevatedAnimController: elevatedAnimController,
+          items: const [
+            MenuIndiceItem(title: 'Home'),
+            MenuIndiceItem(title: 'Projects'),
+            MenuIndiceItem(title: 'CV'),
+          ],
         ),
         const SizedBox(width: 5),
       ],

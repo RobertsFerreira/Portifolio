@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:portifolio/src/modules/core/components/menu_indice/menu_indice_component.dart';
 import 'package:portifolio/src/modules/curriculum/page/curriculum.dart';
@@ -17,6 +19,10 @@ class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late Animation<double> elevatedAnimation;
   late AnimationController elevatedAnimController;
+
+  final curriculumKey = GlobalKey(debugLabel: 'curriculum_section');
+  final homeKey = GlobalKey(debugLabel: 'home_section');
+  bool inAnimation = false;
 
   @override
   void initState() {
@@ -38,6 +44,24 @@ class _HomePageState extends State<HomePage>
   void dispose() {
     elevatedAnimController.dispose();
     super.dispose();
+  }
+
+  void gotoSection(GlobalKey? key) {
+    if (key != null) {
+      setState(() {
+        inAnimation = true;
+      });
+      log('goto section: $key');
+      Scrollable.ensureVisible(
+        key.currentContext!,
+        duration: Durations.extralong4,
+        curve: Easing.standardDecelerate,
+      ).then(
+        (_) => setState(() {
+          inAnimation = false;
+        }),
+      );
+    }
   }
 
   @override
@@ -70,8 +94,15 @@ class _HomePageState extends State<HomePage>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          flex: 4,
-          child: Curriculum(maxWidth: maxWidth),
+          flex: 7,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(key: homeKey, height: 1500),
+                Curriculum(key: curriculumKey, maxWidth: maxWidth),
+              ],
+            ),
+          ),
         ),
         VerticalDivider(
           color: Theme.of(context).dividerColor.withOpacity(.1),
@@ -79,10 +110,16 @@ class _HomePageState extends State<HomePage>
         MenuIndiceComponent(
           elevatedAnimation: elevatedAnimation,
           elevatedAnimController: elevatedAnimController,
-          items: const [
-            MenuIndiceItem(title: 'Home'),
-            MenuIndiceItem(title: 'Projects'),
-            MenuIndiceItem(title: 'CV'),
+          items: [
+            MenuIndiceItem(
+              title: 'Home',
+              onPressed: inAnimation ? null : () => gotoSection(homeKey),
+            ),
+            const MenuIndiceItem(title: 'Projects'),
+            MenuIndiceItem(
+              title: 'CV',
+              onPressed: inAnimation ? null : () => gotoSection(curriculumKey),
+            ),
           ],
         ),
         const SizedBox(width: 5),
@@ -91,6 +128,6 @@ class _HomePageState extends State<HomePage>
   }
 
   Widget _layoutBuildTablet(double maxWidth) {
-    return Curriculum(maxWidth: maxWidth);
+    return Curriculum(key: curriculumKey, maxWidth: maxWidth);
   }
 }

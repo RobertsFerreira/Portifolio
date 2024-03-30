@@ -18,15 +18,13 @@ class Curriculum extends StatefulWidget {
 class _CurriculumState extends State<Curriculum> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 80),
-        child: Builder(
-          builder: (_) {
-            if (widget.maxWidth >= 1024) return _buildLayoutDesktop();
-            return _buildLayoutTablet();
-          },
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 80),
+      child: Builder(
+        builder: (_) {
+          if (widget.maxWidth >= 1024) return _buildLayoutDesktop();
+          return _buildLayoutTablet();
+        },
       ),
     );
   }

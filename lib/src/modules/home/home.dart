@@ -7,9 +7,7 @@ import 'package:portifolio/src/modules/curriculum/page/curriculum.dart';
 import '../core/components/menu_indice/menu_indice_item.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
-
-  final String title;
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();

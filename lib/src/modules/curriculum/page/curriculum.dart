@@ -6,9 +6,11 @@ import '../../core/components/timeline/timeline_leading_item.dart';
 
 class Curriculum extends StatefulWidget {
   final double maxWidth;
+  final double padding;
   const Curriculum({
     super.key,
     required this.maxWidth,
+    this.padding = 80,
   });
 
   @override
@@ -19,14 +21,38 @@ class _CurriculumState extends State<Curriculum> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 80),
+      padding: EdgeInsets.symmetric(
+        horizontal: widget.padding,
+      ),
       child: Builder(
         builder: (_) {
           if (widget.maxWidth >= 1024) return _buildLayoutDesktop();
-          return _buildLayoutTablet();
+          if (widget.maxWidth >= 768 && widget.maxWidth < 1024) {
+            return _buildLayoutTablet();
+          }
+          return _buildLayoutMobile();
         },
       ),
     );
+  }
+
+  Widget _buildLayoutDesktop() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Expanded(flex: 1, child: SizedBox.shrink()),
+        Expanded(flex: 3, child: timeLine),
+        const Expanded(flex: 1, child: SizedBox.shrink()),
+      ],
+    );
+  }
+
+  Widget _buildLayoutTablet() {
+    return timeLine;
+  }
+
+  Widget _buildLayoutMobile() {
+    return timeLineMobile;
   }
 
   Widget get timeLine {
@@ -143,18 +169,111 @@ class _CurriculumState extends State<Curriculum> {
     );
   }
 
-  Widget _buildLayoutDesktop() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+  Widget get timeLineMobile {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Expanded(flex: 1, child: SizedBox.shrink()),
-        Expanded(flex: 3, child: timeLine),
-        const Expanded(flex: 1, child: SizedBox.shrink()),
+        const SizedBox(height: 20),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Robert da Silva Ferreira',
+              style: Theme.of(context).textTheme.displayLarge,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Tocantins, Minas Gerais.',
+              style: Theme.of(context).textTheme.labelMedium,
+            ),
+          ],
+        ),
+        const SizedBox(height: 20),
+        Text(
+          'Bacharel em Ciência da computação com 2 anos de experiencia em desenvolvimento de software. Dentro dos 2 anos, o foco principal na área mobile e desktop e ocorrendo pequenas experiencias com web. Conhecimento sobre a linguagens Python e alguns frameworks como FastAPI e Flask para desenvolvimento de API, enquanto no desenvolvimento Front-end o foco é voltado para o dart com o framework Flutter.',
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+        const SizedBox(height: 50),
+        Text(
+          'Idiomas',
+          style: Theme.of(context).textTheme.displaySmall,
+        ),
+        const SizedBox(height: 20),
+        Row(
+          children: [
+            const Icon(Icons.circle, size: 8),
+            const SizedBox(width: 10),
+            Text(
+              'Português - Nativo',
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+          ],
+        ),
+        const SizedBox(height: 50),
+        Text(
+          'Experiências',
+          style: Theme.of(context).textTheme.displaySmall,
+        ),
+        const SizedBox(height: 20),
+        Timeline(
+          indicatorAlignment: Alignment.topCenter,
+          itemGap: 20,
+          indicatorCentered: true,
+          indicators: List.generate(
+            1,
+            (index) => const Icon(
+              Icons.circle,
+              size: 12,
+            ),
+          ),
+          children: const [
+            TimelineItem(
+              title: 'Programador Full - Stack (2021 - Current)',
+              subTitle: 'Empresa: VeeV Sistemas, Tocantins - MG',
+              description:
+                  'Responsável pelo desenvolvimento e manutenção dos softwares mais atuais da empresa, no qual era realizadas utilizando Dart e Flutter, em conjunto com Python e os frameworks Flask e FastApi',
+            ),
+          ],
+        ),
+        const SizedBox(height: 50),
+        Text(
+          'Formações e Certificações',
+          style: Theme.of(context).textTheme.displaySmall,
+        ),
+        const SizedBox(height: 20),
+        Timeline(
+          indicatorAlignment: Alignment.topCenter,
+          itemGap: 20,
+          indicatorCentered: true,
+          indicators: List.generate(
+            3,
+            (index) => const Icon(Icons.circle, size: 12),
+          ),
+          children: const [
+            TimelineItem(
+              title: 'Bacharel em Ciência da Computação (2019 - 2023)',
+              subTitle:
+                  'Pelo Centro Universitário Governador Ozanan Coelho, Ubá - MG',
+              description:
+                  'Neste curso foi demonstrado a base estrutural e lógica em áreas como a de desenvolvimento, redes. Demonstrações nas quais ocorreram através de trabalhos práticos. Em todos os sistemas eram obrigatórios que os alunos elaborassem por ideias de projetos que atendessem sobre os temas oferecidos e que pudesse ajudar a população local.',
+            ),
+            TimelineItem(
+              title:
+                  'Pós-Graduação em Engenharia da Qualidade de Software (2023 - 2024)',
+              subTitle: 'Pela Faculdade BookPlay, Birigui - SP',
+              description: '',
+            ),
+            TimelineItem(
+              title:
+                  'Curso de Criação de Apps Android/iOS/Web com Flutter (2022)',
+              subTitle: 'Pela Udemy',
+              description:
+                  'Curso introdutório de Flutter e Dart, iniciando com o ensino de conceitos básicos da linguagem. Ao avançar nos conceitos começam ser desenvolvidos projetos práticos para aplicar os conceitos ensinados.',
+            ),
+          ],
+        ),
+        const SizedBox(height: 50),
       ],
     );
-  }
-
-  Widget _buildLayoutTablet() {
-    return timeLine;
   }
 }

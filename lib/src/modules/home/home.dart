@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage>
                     constraints.maxWidth < 1024) {
                   return _layoutBuildTablet(constraints.maxWidth);
                 }
-                return Text(constraints.maxWidth.toString());
+                return _layoutBuildTablet(constraints.maxWidth);
               },
             ),
           ),
@@ -126,6 +126,12 @@ class _HomePageState extends State<HomePage>
   }
 
   Widget _layoutBuildTablet(double maxWidth) {
-    return Curriculum(key: curriculumKey, maxWidth: maxWidth);
+    return SingleChildScrollView(
+      child: Curriculum(
+        key: curriculumKey,
+        maxWidth: maxWidth,
+        padding: 40,
+      ),
+    );
   }
 }

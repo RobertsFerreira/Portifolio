@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage>
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(key: homeKey, height: 1500),
+                // SizedBox(key: homeKey, height: 1500),
                 Curriculum(key: curriculumKey, maxWidth: maxWidth),
               ],
             ),
